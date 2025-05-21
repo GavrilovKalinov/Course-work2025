@@ -53,34 +53,6 @@ class BitTorrentClient:
         print(f"Торрент добавлен. Info hash: {info_hash}")
         return info_hash
     
-    def add_magnet_link(self, magnet_link, save_path='./downloads'):
-        """
-        Добавляет торрент по magnet-ссылке.
-        
-        :param magnet_link: Magnet-ссылка
-        :param save_path: Директория для сохранения загруженных файлов
-        :return: Идентификатор торрента (info_hash)
-        """
-        # Парсим magnet-ссылку
-        params = lt.parse_magnet_uri(magnet_link)
-        params.save_path = save_path
-        params.storage_mode = lt.storage_mode_t.storage_mode_sparse
-        
-        # Добавляем торрент в сессию
-        handle = self.session.add_torrent(params)
-        info_hash = str(handle.info_hash())
-        
-        # Сохраняем информацию о торренте
-        self.torrents[info_hash] = {
-            'handle': handle,
-            'status': None,
-            'added_time': datetime.datetime.now(),
-            'save_path': save_path
-        }
-        
-        print(f"Magnet-ссылка добавлена. Info hash: {info_hash}")
-        return info_hash
-    
     def update_torrent_status(self, info_hash):
         """
         Обновляет статус торрента.
