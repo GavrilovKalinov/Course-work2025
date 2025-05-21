@@ -36,14 +36,6 @@ class BitTorrentClientGUI:
         # Кнопка добавления торрент-файла
         ttk.Button(add_frame, text="Добавить файл торрента", command=self.add_torrent_file).pack(side=tk.LEFT, padx=5)
         
-        # Поле ввода и кнопка для magnet-ссылки
-        magnet_frame = ttk.Frame(add_frame)
-        magnet_frame.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
-        
-        self.magnet_entry = ttk.Entry(magnet_frame)
-        self.magnet_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
-        ttk.Button(magnet_frame, text="Добавить Magnet-ссылку", command=self.add_magnet_link).pack(side=tk.LEFT)
-        
         # Список активных торрентов
         list_frame = ttk.LabelFrame(main_frame, text="Активные торренты", padding="10")
         list_frame.pack(fill=tk.BOTH, expand=True, pady=5)
